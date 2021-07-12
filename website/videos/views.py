@@ -56,7 +56,7 @@ def saveFrame(request,video_id):
  
     video = get_object_or_404(Video, pk = video_id)
     still = PredictedAnomaly.objects.filter(title = video.title)
-    if still is None:
+    if not still :
         path = os.path.dirname(__file__)
         path = path.replace('videos',video.video.url)
         clip = VideoFileClip(path) 
